@@ -7,7 +7,27 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Nerds Like Words</h1>
-    <p>Word games coming soon!</p>
+    <h1 class="site-title">Nerds Like Words</h1>
+
+    <div class="game-container">
+        <h1>Word Scramble</h1>
+
+    <div class="streak-box">
+        <p>Streak: <span id="currentStreak">0</span></p>
+        <p>Best: <span id="bestStreak">0</span></p>
+    </div>
+
+        <p class="scrambled-word" id="scrambled"></p>
+
+        <input type="text" id="guessInput" placeholder="Type your guess..." autocomplete="off" />
+
+        <button id="submitBtn">Submit Guess</button>
+        <button id="newWordBtn">New Word</button>
+
+        <p id="result"></p>
+    </div>
+
+    <script src="js/main.js"></script>
+    <div id="confetti-container"></div>
 </body>
 </html>
