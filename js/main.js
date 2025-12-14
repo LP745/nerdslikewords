@@ -66,6 +66,8 @@ function startTimerMode() {
   wordsSolved = 0;
   document.getElementById("gameOverScreen").classList.add("hidden");
   document.getElementById("timerDisplay").classList.remove("hidden");
+  document.getElementById("timer").textContent = "2:00";
+  document.getElementById("wordCount").textContent = "0";
   document.getElementById("guessInput").disabled = false;
   document.getElementById("submitBtn").disabled = false;
   document.getElementById("newWordBtn").disabled = false;
@@ -87,6 +89,8 @@ function startTimerMode() {
 
 // End timer mode
 function endTimerMode() {
+  if (gameMode !== "timer") return; // Don't end if we're no longer in timer mode
+  
   gameActive = false;
   clearInterval(timerInterval);
   document.getElementById("guessInput").disabled = true;
@@ -102,6 +106,7 @@ function endTimerMode() {
 function resumeClassicMode() {
   gameMode = "classic";
   gameActive = false;
+  clearInterval(timerInterval);
   document.getElementById("gameOverScreen").classList.add("hidden");
   document.getElementById("timerDisplay").classList.add("hidden");
   document.getElementById("guessInput").disabled = false;
@@ -147,9 +152,8 @@ function checkGuess() {
     
     // Auto-load new word after 1.5 seconds
     setTimeout(() => {
-      if (gameActive) {
-        newWord();
-      }
+      if (gameMode === "timer" && !gameActive) return; // Don't auto-advance if timer ended
+      newWord();
     }, 1500);
 
   } else {
@@ -165,6 +169,12 @@ function checkGuess() {
       currentStreak = 0;
       document.getElementById("currentStreak").textContent = currentStreak;
     }
+    
+    // Auto-load new word after 1.5 seconds
+    setTimeout(() => {
+      if (gameMode === "timer" && !gameActive) return; // Don't auto-advance if timer ended
+      newWord();
+    }, 1500);
   }
 }
 
