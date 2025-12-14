@@ -17,6 +17,16 @@
         <p>Best: <span id="bestStreak">0</span></p>
     </div>
 
+    <div class="mode-selector">
+        <button id="classicModeBtn" class="mode-btn active">Classic</button>
+        <button id="timerModeBtn" class="mode-btn">2 Min Challenge</button>
+    </div>
+
+    <div id="timerDisplay" class="timer-display hidden">
+        <p>Time: <span id="timer">2:00</span></p>
+        <p>Words: <span id="wordCount">0</span></p>
+    </div>
+
         <p class="scrambled-word" id="scrambled"></p>
 
         <input type="text" id="guessInput" placeholder="Type your guess..." autocomplete="off" />
@@ -25,6 +35,12 @@
         <button id="newWordBtn">New Word</button>
 
         <p id="result"></p>
+    </div>
+
+    <div id="gameOverScreen" class="game-over-screen hidden">
+        <h2>Time's Up!</h2>
+        <p>Words Solved: <span id="finalScore">0</span></p>
+        <button id="playAgainBtn">Play Again</button>
     </div>
 
     <script src="js/main.js"></script>
